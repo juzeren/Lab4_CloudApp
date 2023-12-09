@@ -48,5 +48,5 @@ jobs:
         with:
           push: true
           # 给清单打上多个标签
-          tags: juzeren/CloudAPP:latest
+          tags: juzeren/cloudapp_juju:latest
 
