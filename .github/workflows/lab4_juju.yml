@@ -5,17 +5,7 @@ on:
   push:
     branches:
       - main
-  # Allows you to run this workflow manually from the Actions tab
-  # 可以手动触发
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: "Log level"
-        required: true
-        default: "warning"
-      tags:
-        description: "Test scenario tags"
-
+ 
 jobs:
   buildx:
     runs-on: ubuntu-latest
@@ -46,8 +36,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./Dockerfile
           push: true
           # 给清单打上多个标签
           tags: juzeren/cloudapp_juju:latest
