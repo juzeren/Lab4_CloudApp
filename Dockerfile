@@ -1,17 +1,11 @@
 # Container image that runs your code
-FROM alpine:3.10 #docker镜像版本
+# docker镜像版本
+FROM alpine:3.10 
 
-#在容器内创建目录
-RUN mkdir -p /usr/src 
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-#将项目文件copy到目录内
-COPY . /usr/src
-#指定项目工作目录
-WORKDIR /usr/src
-#在项目目录安装项目依赖
-RUN npm i
-#声明镜像服务端口
-EXPOSE 4000
-CMD ["node","app.js"]
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
 
 
